@@ -99,7 +99,7 @@ query_document = filters.create(query_document_filter_func)
 
 @bot.on_message(filters.command("start"))
 async def start(bot, message):
-    await message.reply("Send video link or html")
+    await message.reply("Send video link or html**/download_html ** /download_html@{BOT}**\n")
 
 
 async def send_video(message, path, caption, quote, filename):
