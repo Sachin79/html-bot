@@ -423,11 +423,11 @@ def download_video(message, video):
         cmd=f'yt-dlp -o "{name}.mp4" "{link}"'
     elif "jwplayer" in url:# and raw_text2 in ["144", "240", "360", "480", "720", "no"]:
         cmd=f'yt-dlp -o "{name}.mp4" "{link}"'    
-    elif "adda" in url:# and raw_text2 in ["144", "240", "360", "480", "720", "no"]:
+    elif "adda" in link:# and raw_text2 in ["144", "240", "360", "480", "720", "no"]:
         cmd=f'yt-dlp -o "{name}.mp4" "{link}"'
-    elif ".pdf" in url: #and raw_text2 in ["144", "240", "360", "480", "720", "no"]:
+    elif ".pdf" in link: #and raw_text2 in ["144", "240", "360", "480", "720", "no"]:
         cmd = f'yt-dlp -o "{name}.pdf" "{link}"'
-    elif "drive" in url:
+    elif "drive" in link:
         cmd = f'yt-dlp -o "{name}.pdf" "{link}"'
     else:
         cmd = f'yt-dlp -o "{name}.mp4" -f "{ytf}+bestaudio" "{link}"'
