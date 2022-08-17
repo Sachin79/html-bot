@@ -430,19 +430,19 @@ def download_video(message, video):
         ytf = "'best'"
         
     if ytf == f'bestvideo[height<={vid_format}][ext=mp4]+bestaudio[ext=m4a]':
-        cmd = f'yt-dlp -o "{name}.mp4" -f "{ytf}" "{link}"'
+        cmd = f'yt-dlp -o "{topic}.mp4" -f "{ytf}" "{link}"'
     elif vid_format == "no":
-        cmd=f'yt-dlp -o "{name}.mp4" "{link}"'
+        cmd=f'yt-dlp -o "{topic}.mp4" "{link}"'
     elif "jwplayer" in link:# and raw_text2 in ["144", "240", "360", "480", "720", "no"]:
-        cmd=f'yt-dlp -o "{name}.mp4" "{link}"'    
+        cmd=f'yt-dlp -o "{topic}.mp4" "{link}"'    
     elif "adda" in link:# and raw_text2 in ["144", "240", "360", "480", "720", "no"]:
-        cmd=f'yt-dlp -o "{name}.mp4" "{link}"'
+        cmd=f'yt-dlp -o "{topic}.mp4" "{link}"'
     elif ".pdf" in link: #and raw_text2 in ["144", "240", "360", "480", "720", "no"]:
-        cmd = f'yt-dlp -o "{name}.pdf" "{link}"'
+        cmd = f'yt-dlp -o "{topic}.pdf" "{link}"'
     elif "drive" in link:
-        cmd = f'yt-dlp -o "{name}.pdf" "{link}"'
+        cmd = f'yt-dlp -o "{topic}.pdf" "{link}"'
     else:
-        cmd = f'yt-dlp -o "{name}.mp4" -f "{ytf}+bestaudio" "{link}"'
+        cmd = f'yt-dlp -o "{topic}.mp4" -f "{ytf}+bestaudio" "{link}"'
 
     cmd = (
         f"yt-dlp --socket-timeout 30 -o './downloads/{chat}/%(id)s.%(ext)s' -f {ytf} --no-warning '{link}'"
