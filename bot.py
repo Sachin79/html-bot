@@ -413,8 +413,24 @@ def download_video(message, video):
             ytf= "'http-720p'"
         else:
             ytf = "'http-360p'"
+    
     else:
         ytf = "'best'"
+        
+    if ytf == f'bestvideo[height<={vid_format}][ext=mp4]+bestaudio[ext=m4a]':
+        cmd = f'yt-dlp -o "{name}.mp4" -f "{ytf}" "{link}"'
+    elif vid_format == "no":
+        cmd=f'yt-dlp -o "{name}.mp4" "{link}"'
+    elif "jwplayer" in url:# and raw_text2 in ["144", "240", "360", "480", "720", "no"]:
+        cmd=f'yt-dlp -o "{name}.mp4" "{link}"'    
+    elif "adda" in url:# and raw_text2 in ["144", "240", "360", "480", "720", "no"]:
+        cmd=f'yt-dlp -o "{name}.mp4" "{link}"'
+    elif ".pdf" in url: #and raw_text2 in ["144", "240", "360", "480", "720", "no"]:
+        cmd = f'yt-dlp -o "{name}.pdf" "{link}"'
+    elif "drive" in url:
+        cmd = f'yt-dlp -o "{name}.pdf" "{link}"'
+    else:
+        cmd = f'yt-dlp -o "{name}.mp4" -f "{ytf}+bestaudio" "{link}"'
 
     cmd = (
         f"yt-dlp --socket-timeout 30 -o './downloads/{chat}/%(id)s.%(ext)s' -f {ytf} --no-warning '{link}'"
