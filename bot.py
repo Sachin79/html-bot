@@ -1,4 +1,5 @@
 import re
+import sys
 import os
 import asyncio
 import logging
@@ -235,6 +236,17 @@ def parse_html(file, def_format):
 
     return videos
 
+@bot.on_message(filters.command(["cancel"]))
+async def cancel(_, m):
+    editable = await m.reply_text("Canceling All process Plz wait")
+    global cancel
+    cancel = True
+    await editable.edit("cancled")
+    return
+@bot.on_message(filters.command("restart"))
+async def restart_handler(_, m):
+    await m.reply_text("Restarted!", True)
+    os.execl(sys.executable, sys.executable, *sys.argv)
 
 @bot.on_callback_query(query_document & query_same_user)
 async def choose_html_video_format(bot, query):
