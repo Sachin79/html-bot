@@ -444,9 +444,7 @@ def download_video(message, video):
     else:
         cmd = f'yt-dlp -o "{topic}.mp4" -f "{ytf}+bestaudio" "{link}"'
 
-    cmd = (
-        f"yt-dlp --socket-timeout 30 -o './downloads/{chat}/%(id)s.%(ext)s' -f {ytf} --no-warning '{link}'"
-    )
+    cmd = (f"yt-dlp --socket-timeout 30 -o './downloads/{chat}/%(id)s.%(ext)s' -f {ytf} --no-warning '{link}'")
     filename = (
         title.replace("/", "|")
         .replace("+", "_")
